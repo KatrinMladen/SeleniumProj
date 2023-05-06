@@ -68,7 +68,6 @@ public class TestAmason {
         //span[contains(text(),"Women's Walking Shoes")]
         //input[@id='679377011']
         //WebElement element = driver.findElement(By.partialLinkText("Shoes"));
-        //searchBox.getRect();
     }
 
     @AfterTest
