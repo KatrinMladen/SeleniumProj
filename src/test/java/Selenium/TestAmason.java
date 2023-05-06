@@ -11,7 +11,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
+
 
 public class TestAmason {
 
@@ -46,11 +48,19 @@ public class TestAmason {
             WebElement searchElem = driver.findElement(By.xpath("//input[@id='nav-search-submit-button']"));
             searchElem.click();
 
+        try {
             WebElement womenShoes = driver.findElement(By.xpath("//*[@id=\"n/679377011\"]/span/a"));
             womenShoes.click();
-            WebElement onList = driver.findElement(By.xpath("//*[@id=\"n/679377011\"]/span/span[contains(@class,'a-size-base a-color-base a-text-bold')]"));
-            Assert.assertTrue(onList.getAttribute("class").contains("a-text-bold"),"Failed to select Women's Walking Shoes option");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Failed to find 'Women's Shoes' category link");
+        }
 
+        try {
+            WebElement onList = driver.findElement(By.xpath("//*[@id=\"n/679377011\"]/span/span[contains(@class,'a-size-base a-color-base a-text-bold')]"));
+            Assert.assertTrue(onList.getAttribute("class").contains("a-text-bold"), "Failed to select Women's Shoes option");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Failed to find Women's Shoes filter option");
+        }
    //     catch (Exception e){
   //          System.out.println("Women's Walking Shoes option in not found");
   //      }
