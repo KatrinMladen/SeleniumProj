@@ -64,7 +64,6 @@ public class TestAmason {
    //     catch (Exception e){
   //          System.out.println("Women's Walking Shoes option in not found");
   //      }
-
         //span[contains(text(),"Women's Walking Shoes")]
         //input[@id='679377011']
         //WebElement element = driver.findElement(By.partialLinkText("Shoes"));
